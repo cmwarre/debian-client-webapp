@@ -1,0 +1,5 @@
+.idea/*
+env/*
+client/node_modules/*
+.idea/
+*.pyc
