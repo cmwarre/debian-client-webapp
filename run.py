@@ -1,5 +1,5 @@
 #!/usr/bin/python
-from server.app import app
+from server import app
 
 
 def main():

@@ -14,7 +14,7 @@ var path = require('path');
  */
 
 gulp.task('clean:build', function() {
-    del('./public/js/*')
+    del('../server/static/js/*')
 });
 
 gulp.task('build', ['clean:build'], function() {
@@ -49,6 +49,7 @@ gulp.task('serve:node', function(done) {
  * Main tasks
  */
 
+gulp.task('clean', ['clean:build'])
 gulp.task('serve', ['serve:node']);
 gulp.task('watch', ['build', 'watch:build']);
 gulp.task('default', ['serve']);
