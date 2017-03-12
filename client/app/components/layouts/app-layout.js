@@ -14,39 +14,48 @@ var AppLayout = React.createClass({
                         <Navbar.Header>
                             <IndexLinkContainer to="/">
                                 <Navbar.Brand>
-                                    Tamaki React Boilerplate
+                                    Client Setup
                                 </Navbar.Brand>
                             </IndexLinkContainer>
                             <Navbar.Toggle />
                         </Navbar.Header>
                         <Navbar.Collapse>
                             <Nav>
-                                <LinkContainer to="/">
+                                <LinkContainer to="/network">
                                     <NavItem eventKey={1}>
-                                        <FontAwesome name="home" /> Home
-                                    </NavItem>
-                                </LinkContainer>
-                                <LinkContainer to="/about">
-                                    <NavItem eventKey={2}>
-                                        <FontAwesome name="info" /> About
-                                    </NavItem>
-                                </LinkContainer>
-                                <LinkContainer to="/contact">
-                                    <NavItem eventKey={3}>
-                                        <FontAwesome name="phone" /> Contact
+                                        Network
                                     </NavItem>
                                 </LinkContainer>
                             </Nav>
+                            <Nav>
+                                <LinkContainer to="/ntp">
+                                    <NavItem eventKey={1}>
+                                        Time Synchronization
+                                    </NavItem>
+                                </LinkContainer>
+                            </Nav>
+                            <Nav>
+                                <LinkContainer to="/ignition">
+                                    <NavItem eventKey={1}>
+                                        Ignition
+                                    </NavItem>
+                                </LinkContainer>
+                            </Nav>
+                            <Nav>
+                                <NavItem eventKey={2} href="/noVNC">
+                                    <FontAwesome name="television" /> noVNC
+                                </NavItem>
+                            </Nav>
                             <Nav pullRight>
                                 <LinkContainer to="/login">
-                                    <NavItem eventKey={4}>
+                                    <NavItem eventKey={3}>
                                         <FontAwesome name="sign-in" /> Login
                                     </NavItem>
                                 </LinkContainer>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
-                    <div className="container-fluid">
+                    <div className="container">
                         <div className="row">
                             {this.props.children}
                         </div>

@@ -15,9 +15,8 @@ app = Flask(__name__)
 def index(e=None):
     return render_template('index.html')
 
-
 # debug settings
-if app.debug:
+if True:
 
     # disable the cache in debug mode so that react js components will reload on refresh
     @app.after_request
