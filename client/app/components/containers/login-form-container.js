@@ -14,7 +14,6 @@ const LoginFormContainer = React.createClass({
 
     onSubmit: function(event){
         event.preventDefault();
-        console.log(this.state);
         api.login(this.state.username, this.state.password, response => {
             this.props.router.push("/");
         });

@@ -34,15 +34,11 @@ const NetworkFormContainer = React.createClass({
     onChange: function(event){
         let _state = this.state.data;
 
-        console.log(event.target);
-        console.log(event.value);
-
         if(event.target.id == "dns_nameservers")
             _state[event.target.id] = event.target.value.trim().split(",");
         else
             _state[event.target.id] = event.target.value;
 
-        console.log(_state);
         this.setState({data: _state});
     },
 

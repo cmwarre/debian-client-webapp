@@ -4,7 +4,6 @@ import {Form, FormGroup, ControlLabel, FormControl, Button, Panel} from 'react-b
 export default function(props){
 
     if(props.data) {
-        console.log(props.data);
         let dns_nameservers = props.data.dns_nameservers ? props.data.dns_nameservers : [];
         return (
             <div className="container-fluid">
@@ -18,7 +17,7 @@ export default function(props){
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel>Domain Name</ControlLabel>
-                            <FormControl id="domain" type="text" onChange={props.onChange}
+                            <FormControl id="domain_name" type="text" onChange={props.onChange}
                                          value={props.data.domain_name} required/>
                         </FormGroup>
                         <FormGroup>
@@ -42,7 +41,7 @@ export default function(props){
                             </FormGroup>
                             <FormGroup>
                                 <ControlLabel>Gateway</ControlLabel>
-                                <FormControl id="network" type="text" onChange={props.onChange}
+                                <FormControl id="gateway" type="text" onChange={props.onChange}
                                              value={props.data.gateway}/>
                             </FormGroup>
                             <FormGroup>

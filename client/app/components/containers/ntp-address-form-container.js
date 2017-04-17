@@ -22,7 +22,6 @@ const NTPAddressFormContainer = React.createClass({
 
     onSubmit: function(event){
         event.preventDefault();
-        console.log(this.state);
         this.props.onSubmit(this.state);
     },
 
@@ -33,7 +32,6 @@ const NTPAddressFormContainer = React.createClass({
     },
 
     render: function(){
-        console.log(this.state);
         return(
             <NTPAddressForm
                 address={this.state.address}

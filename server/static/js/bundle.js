@@ -25565,6 +25565,10 @@
 	    displayName: 'AppLayout',
 	
 	
+	    noVNCRedirect: function noVNCRedirect() {
+	        window.location = "/noVNC/";
+	    },
+	
 	    render: function render() {
 	        return _react2.default.createElement(
 	            'div',
@@ -25636,7 +25640,7 @@
 	                            null,
 	                            _react2.default.createElement(
 	                                _reactBootstrap.NavItem,
-	                                { eventKey: 2, href: '/noVNC' },
+	                                { eventKey: 2, href: '/noVNC/', target: '_blank', onSelect: this.noVNCRedirect },
 	                                _react2.default.createElement(_reactFontawesome2.default, { name: 'television' }),
 	                                ' noVNC'
 	                            )
@@ -45474,6 +45478,10 @@
 	
 	var _reactBootstrap = __webpack_require__(295);
 	
+	var _reactFontawesome = __webpack_require__(293);
+	
+	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Home = _react2.default.createClass({
@@ -45573,7 +45581,6 @@
 	        var _this = this;
 	
 	        event.preventDefault();
-	        console.log(this.state);
 	        api.login(this.state.username, this.state.password, function (response) {
 	            _this.props.router.push("/");
 	        });
@@ -46898,7 +46905,6 @@
 	
 	        api.getNTPSettings(function (response) {
 	            _this.setState({ data: response.data });
-	            console.log(response.data);
 	        });
 	    },
 	
@@ -47227,7 +47233,6 @@
 	
 	    onSubmit: function onSubmit(event) {
 	        event.preventDefault();
-	        console.log(this.state);
 	        this.props.onSubmit(this.state);
 	    },
 	
@@ -47238,7 +47243,6 @@
 	    },
 	
 	    render: function render() {
-	        console.log(this.state);
 	        return _react2.default.createElement(_ntpAddressForm2.default, {
 	            address: this.state.address,
 	            onSubmit: this.onSubmit,
@@ -47354,12 +47358,8 @@
 	    onChange: function onChange(event) {
 	        var _state = this.state.data;
 	
-	        console.log(event.target);
-	        console.log(event.value);
-	
 	        if (event.target.id == "dns_nameservers") _state[event.target.id] = event.target.value.trim().split(",");else _state[event.target.id] = event.target.value;
 	
-	        console.log(_state);
 	        this.setState({ data: _state });
 	    },
 	
@@ -47400,7 +47400,6 @@
 	exports.default = function (props) {
 	
 	    if (props.data) {
-	        console.log(props.data);
 	        var dns_nameservers = props.data.dns_nameservers ? props.data.dns_nameservers : [];
 	        return _react2.default.createElement(
 	            'div',
@@ -47435,7 +47434,7 @@
 	                            null,
 	                            'Domain Name'
 	                        ),
-	                        _react2.default.createElement(_reactBootstrap.FormControl, { id: 'domain', type: 'text', onChange: props.onChange,
+	                        _react2.default.createElement(_reactBootstrap.FormControl, { id: 'domain_name', type: 'text', onChange: props.onChange,
 	                            value: props.data.domain_name, required: true })
 	                    ),
 	                    _react2.default.createElement(
@@ -47494,7 +47493,7 @@
 	                                null,
 	                                'Gateway'
 	                            ),
-	                            _react2.default.createElement(_reactBootstrap.FormControl, { id: 'network', type: 'text', onChange: props.onChange,
+	                            _react2.default.createElement(_reactBootstrap.FormControl, { id: 'gateway', type: 'text', onChange: props.onChange,
 	                                value: props.data.gateway })
 	                        ),
 	                        _react2.default.createElement(

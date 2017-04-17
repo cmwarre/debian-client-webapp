@@ -2,32 +2,29 @@
     "data": {
         "time_sync": {
             "servers": [
-                "0.debian.pool.ntp.org", 
-                "2.debian.pool.ntp.org", 
-                "3.debian.pool.ntp.org", 
-                "1.debian.pool.ntp.org"
+                "10.17.10.10", 
+                "10.17.10.11"
             ]
         }, 
         "ignition": {
-            "project": "api", 
-            "windowmode": "windowed", 
+            "project": "Ignition7_8CoreCertificationTest", 
             "launch_params": {
                 "Username": "c005_oper", 
                 "TouchscreenMode": "1"
             }, 
-            "address": "demo.tamaki-control.com"
+            "address": "10.17.10.84:8088", 
+            "windowmode": "windowed"
         }, 
         "network": {
-            "domain": "tamakicontrol.com", 
             "hostname": "CLOIC001", 
             "dns_nameservers": [
                 "4.4.4.4", 
                 "8.8.8.8"
             ], 
-            "domain_name": "tamakicontrol.local", 
+            "domain_name": "tamaki-control.local", 
             "netmask": "255.255.255.0", 
             "address": "192.168.0.108", 
-            "type": "static", 
+            "type": "dhcp", 
             "gateway": "192.168.0.1"
         }
     }

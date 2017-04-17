@@ -24,7 +24,6 @@ const NTPFormContainer = React.createClass({
     componentDidMount: function(){
         api.getNTPSettings(response => {
             this.setState({data: response.data});
-            console.log(response.data);
         });
 
     },
