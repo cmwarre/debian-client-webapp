@@ -5,13 +5,43 @@
 
 from flask import Blueprint, request, jsonify
 from server.backend import *
-from server.config import *
-from server.util import login_required
+from config import *
+from server.util import login_required, has_role
 import pprint
 
-import os
+import os, subprocess
 
 api = Blueprint('api', __name__)
+
+
+@api.route('/uptime', methods=['GET'])
+@login_required()
+def get_uptime():
+
+    uptime = subprocess.check_output(["uptime"])
+    return jsonify({
+        "data": uptime
+    })
+# end def
+
+
+@api.route('/service/<>', methods=['GET'])
+@login_required()
+def get_service_status(service):
+
+    status = subprocess.check_output(["service", service, "status"])
+    return jsonify({
+        "data": status
+    })
+
+
+@api.route('/service/<>', methods=['POST'])
+@login_required()
+@has_role("sudo")
+def control_service(service):
+
+    subprocess.call("service", service, "restart")
+    return get_service_status(service)
 
 
 @api.route('/', methods=['GET'])
@@ -23,6 +53,7 @@ def get():
 
 @api.route('/', methods=['PUT'])
 @login_required()
+@has_role("sudo")
 def put():
     raw_data = request.get_json(silent=True)
 
@@ -41,6 +72,7 @@ def get_network():
 
 @api.route('/network', methods=['POST'])
 @login_required()
+@has_role("sudo")
 def post_network():
     raw_data = request.get_json(silent=True)
 
@@ -103,6 +135,7 @@ def get_ignition_projects(gateway_address):
 
 @api.route('/ignition', methods=['POST'])
 @login_required()
+@has_role("sudo")
 def post_ignition():
     raw_data = request.get_json(silent=True)
 
@@ -130,6 +163,7 @@ def get_ntp():
 
 @api.route('/ntp', methods=['POST'])
 @login_required()
+@has_role("sudo")
 def post_ntp():
     raw_data = request.get_json(silent=True)
 
@@ -149,6 +183,7 @@ def post_ntp():
 
 @api.route('/', methods=['POST'])
 @login_required()
+@has_role("sudo")
 def post():
 
     data = request.get_json(silent=True).get('data')

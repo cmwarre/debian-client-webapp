@@ -6,6 +6,8 @@ import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap';
 
 var AppLayout = React.createClass({
 
+    target: "server",
+
     noVNCRedirect: function(){
         window.location = "/noVNC/";
     },
@@ -38,13 +40,15 @@ var AppLayout = React.createClass({
                                     </NavItem>
                                 </LinkContainer>
                             </Nav>
-                            <Nav>
-                                <LinkContainer to="/ignition">
-                                    <NavItem eventKey={1}>
-                                        Ignition
-                                    </NavItem>
-                                </LinkContainer>
-                            </Nav>
+                            { this.target == "client" ?
+                                <Nav>
+                                    <LinkContainer to="/ignition">
+                                        <NavItem eventKey={1}>
+                                            Ignition
+                                        </NavItem>
+                                    </LinkContainer>
+                                </Nav> : null
+                            }
                             <Nav>
                                 <NavItem eventKey={2} href="/noVNC/" target="_blank" onSelect={this.noVNCRedirect}>
                                         <FontAwesome name="television" /> noVNC

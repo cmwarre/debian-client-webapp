@@ -25565,6 +25565,8 @@
 	    displayName: 'AppLayout',
 	
 	
+	    target: "server",
+	
 	    noVNCRedirect: function noVNCRedirect() {
 	        window.location = "/noVNC/";
 	    },
@@ -25622,7 +25624,7 @@
 	                                )
 	                            )
 	                        ),
-	                        _react2.default.createElement(
+	                        this.target == "client" ? _react2.default.createElement(
 	                            _reactBootstrap.Nav,
 	                            null,
 	                            _react2.default.createElement(
@@ -25634,7 +25636,7 @@
 	                                    'Ignition'
 	                                )
 	                            )
-	                        ),
+	                        ) : null,
 	                        _react2.default.createElement(
 	                            _reactBootstrap.Nav,
 	                            null,

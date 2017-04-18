@@ -7,6 +7,7 @@ from flask import Flask, render_template
 from api import api
 
 app = Flask(__name__)
+app.config.from_object('config')
 
 
 # redirect to index on 404 (needed for react router pages)

@@ -5,9 +5,10 @@ import sys
 import stat
 import re
 import argparse
-from server.config import *
+from config import *
 
-DEBUG_MODE=True
+DEBUG_MODE = DEBUG
+
 
 def try_load(settings_filepath):
     data = None
